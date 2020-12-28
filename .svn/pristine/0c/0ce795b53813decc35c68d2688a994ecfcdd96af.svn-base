@@ -1,0 +1,133 @@
+#header{
+	position: relative;
+	background-color: #FF6EA5;
+	height: 7.5rem;
+}
+#back{
+	margin-top: 1.25rem;
+	position: absolute;
+	font-size: 2.1875rem;
+	color: #FFFFFF;
+}
+#title{
+	display: inline-block;
+	color: #FFFFFF;
+	font-size: 1.3rem;
+	margin-top: 1.7rem;
+	margin-left: 3rem;
+}
+#roatte{
+	width: 100%;
+	padding: 0 0.9375rem;
+	position: absolute;
+	bottom: 0.625rem;
+	color: #FFFFFF;
+	font-weight: 600;
+	font-size: 1.1rem;
+}
+.a1{
+	color: #FFFFFF;
+	font-weight: 600;
+	font-size: 1.1rem;
+}
+.a1:active{
+	color: #FFFFFF;
+}
+#outmoney{
+	float: left;
+	padding: 0.3125rem 1.875rem;
+}
+#getmoney{
+	float: right;
+	padding: 0.3125rem 1.875rem;
+}
+.current{
+	border-bottom: 0.25rem solid #FFFFFF;
+}
+#input_money{
+	padding: 0 2.5rem;
+	height: 3.4375rem;
+	font-size: 1.5625rem;
+	border: none;
+}
+#content_input{
+	position: relative;
+}
+#ico_money{
+	position: absolute;
+	font-size: 1.5625rem;
+	top: 1.2rem;
+	left: 0.625rem;
+}
+#content{
+	background-color: #FFFFFF;
+}
+.small_title{
+	display: inline-block;
+	margin-left: 0.625rem;
+	color: #999999;
+	font-size: 1rem;
+}
+.type_ico{
+	width: 2.8rem;
+	height: 2.8rem;
+	background-size: cover;
+}
+.ico_car{
+	background-image: url(../img/交通.png);
+}
+.ico_eat{
+	background-image: url(../img/餐饮.png);
+}
+.ico_yiliao{
+	background-image: url(../img/医疗.png);
+}
+.ico_room{
+	background-image: url(../img/住房扶持.png);
+}
+.ico_office{
+	background-image: url(../img/办公.png);
+}
+.ico_happy{
+	background-image: url(../img/娱乐.png);
+}
+.ico_activity{
+	background-image: url(../img/活动.png);
+}
+.ico_gift{
+	background-image: url(../img/礼物.png);
+}
+.ico_TZ{
+	background-image: url(../img/投资.png);
+}
+.ico_daily{
+	background-image: url(../img/日常报告.png);
+}
+.type_name{
+	display: block;
+	margin: 0 auto;
+	text-align: center;
+	font-size: 0.9375rem;
+}
+html{
+	background-color: #FFFFFF;
+}
+#types li{
+	padding: 0.625rem 0.925rem 0 0.925rem;
+	float: left;
+}
+#submit{
+	display: block;
+	margin: 0 auto;
+	height: 2.5rem;
+	width: 90%;
+	background-color: #FF6EA5;
+	border: 0.0625rem solid #FF6EA5;
+}
+#demo1{
+	padding-left: 1rem;
+	border: 0.0625rem solid #CCCCCC;
+	margin: 3.125rem 0 1.25rem 0;
+	width: 100%;
+	height: 2.5rem;
+}

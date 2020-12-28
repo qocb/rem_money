@@ -1,0 +1,145 @@
+package com.HBSI.com.user;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.sql.Types;
+import java.util.List;
+import java.util.Map;
+
+import com.HBSI.com.Dao.Dao;
+import com.HBSI.com.Dao.DaoImpl;
+import com.sun.glass.ui.CommonDialogs.Type;
+
+/**
+ * @desc 用户表M层实现类
+ * @author T
+ *
+ */
+public class UserServiceimpl implements UserService{
+	
+	Dao dao = new DaoImpl();
+	
+	/**
+	 * 获取用户数量
+	 * @return
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
+	public String Countnum() throws ClassNotFoundException, SQLException{
+		String sql = "select count(user_id) from user";
+		int num = dao.executeQueryForInt(sql);
+		String num2 ="u"+(num+1);
+		return num2;
+		
+	}
+	
+	/**
+	 * 添加用户
+	 */
+	@Override
+	public void add_user(String user_id, String user_name, String user_password, String user_email, String user_state,
+			String user_code, Integer user_Type, String user_img) throws ClassNotFoundException, FileNotFoundException, SQLException, IOException {
+		String sql = "insert into user values(?,?,?,?,?,?,?,?)";
+		dao.executeUpdate(sql, 
+				new int[]{Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,Types.INTEGER,Types.VARCHAR}, 
+				new Object[]{user_id,user_name,user_password,user_email,user_state,user_code,user_Type,user_img});
+	}
+	
+	/**
+	 * 查询全部
+	 */
+	@Override
+	public List<Map<String, Object>> query() throws ClassNotFoundException, SQLException {
+		String sql = "select * from user";
+		List<Map<String, Object>> list = dao.executeQueryForList(sql);
+		return list;
+	}
+
+	
+	/**
+	 * 根据用户id修改用户user_state状态
+	 */
+	public void mate_code(String user_id) throws ClassNotFoundException, SQLException, FileNotFoundException, IOException {
+		String sql = "update user set  user_state='Y' where user_id=?";
+		dao.executeUpdate(sql, new int[]{Types.VARCHAR}, new Object[]{user_id});
+	}
+	
+	/**
+	 * 根据用户id更改用户头像
+	 */
+	@Override
+	public void updata_userid_img(String user_img, String user_id) throws ClassNotFoundException, FileNotFoundException, SQLException, IOException {
+		String sql = "update user set user_img=? where user_id=?";
+		dao.executeUpdate(sql, new int[]{Types.VARCHAR,Types.VARCHAR }, new Object[]{user_img,user_id});
+		
+	}
+	
+	/**
+	 * 根据用户uuid 查找用户
+	 * @return 
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
+	 */
+	@Override
+	public Map<String, Object> getuserByCode(String user_code) throws ClassNotFoundException, SQLException {
+		String sql = "select * from user where user_code = ?";
+		return dao.executeQueryForMap(sql,new int[]{Types.VARCHAR},new Object[]{user_code});
+	}
+	/**
+	 * @desc 根据用户名 查找用户
+	 * @param user_uname
+	 * @return
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
+	@Override
+	public Map<String , Object> getuserByUName(String user_uname) throws ClassNotFoundException, SQLException{
+		String sql = "select * from user where user_uname = ?";
+		return dao.executeQueryForMap(sql,new int[]{Types.VARCHAR},new Object[]{user_uname});
+	}
+
+	
+	
+	
+	//测试
+	public static void main(String[] args) throws ClassNotFoundException, FileNotFoundException, SQLException, IOException {
+		UserServiceimpl userServiceimpl = new UserServiceimpl();
+		//String num3 = userServiceimpl.Countnum();
+		//System.out.println(num3);
+		////添加
+		//userServiceimpl.add_user(num3, "王五", "123478", "10086@qq.com", "Y", "sda0sa9891",1, "4.jpg");
+		////查询
+		//List<Map<String, Object>> list2 = userServiceimpl.query();
+//		for (Map<String, Object> map : list2) {
+//			System.out.println(map);
+//		}
+		//根据用户id修改用户user_state状态
+		userServiceimpl.mate_code("u3");
+		//根据用户id更改用户头像
+		//userServiceimpl.updata_userid_img("靓仔.jpg", "u3");
+
+	}
+
+	/**
+	 * 根据用户名用户密码查找用户
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
+	 */
+	@Override
+	public Map<String, Object> querybyUsernameAndPassword(String user_uname, String user_password) throws ClassNotFoundException, SQLException {
+		int [] types = {Types.VARCHAR,Types.VARCHAR};
+		Object [] values = {user_uname,user_password};
+		
+		return dao.executeQueryForMap("select * from user where user_uname = ? and user_password = ?",types,values);
+	}
+
+	@Override
+	public List<Map<String, Object>> queryExaminee(String budget_user_id) throws ClassNotFoundException, SQLException {
+		String sql = "SELECT * FROM outs WHERE user_id=?";
+		return dao.executeQueryForList(sql, new int[]{Types.VARCHAR}, new Object[]{budget_user_id});
+	}
+
+	
+
+}

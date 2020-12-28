@@ -1,0 +1,117 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+html{
+	background-color: #FFF6F9 ;
+}
+body{
+	background-color: #FFF6F9 ;
+}
+#registered{
+	margin-top: 7.125rem;
+	background-color: #FFF6F9;
+}
+#registered:after{
+	background-color: #FFF6F9;
+}
+#registered:before{
+	background-color: #FFF6F9;
+}
+#registered label{
+	width: 10%;
+	height:10%;
+}
+/* 注册按钮的盒子 */
+#registered_button{
+	width: 75%;
+	height: 6.25rem;
+	margin: 0 auto;
+	margin-top: 2.875rem;
+}
+/*注册按钮*/
+#registered_submit{
+	width: 75%;
+	height: 50%;
+	border: none;
+	border-radius: 1.25rem;
+	background-color: #FB74A4;
+	font-size: 1.0625rem;
+	line-height: 90%;
+	color: #FFD8F7;
+}
+/* 用户名输入的盒子 */
+#user{
+	width: 90%;
+	height: 3.125rem;
+	margin-top: 1.25rem;
+	border: none;
+	background-color: #FFFFFF;
+	margin: 0 auto;
+	border-radius: 0.625rem;
+}
+#user2{
+	width: 90%;
+	height: 3.125rem;
+	border: none;
+	background-color: #FFFFFF;
+	margin: 0 auto;
+	border-radius: 0.625rem;
+	margin-top: 0.7rem;
+}
+#user2:after{
+	background-color:  #FFF6F9;
+}
+#user:after{
+	background-color:  #FFF6F9;
+}
+#user2 .user_input{
+	height: 100%;
+	margin-right: 2.5rem;
+	/* border: 2px solid black; */
+}
+.user_input{
+	height: 100%;
+	margin-right: 2.5rem;
+	margin-top: 0.3125rem;
+}
+.email_input{
+	height: 100%;
+	margin-right: 2.5rem;
+	margin-top: 0.3125rem;
+}
+/* 密码的盒子 */
+#password{
+	width: 90%;
+	height: 3.125rem;
+	background-color: #FFFFFF;
+	margin: 0 auto;
+	margin-top: 0.7rem;
+	border-radius: 0.625rem;
+}
+#password2{
+	width: 90%;
+	height: 3.125rem;
+	background-color: #FFFFFF;
+	margin: 0 auto;
+	margin-top: 0.7rem;
+	border-radius: 0.625rem;
+}
+#password:after{
+	background-color: #FFF6F9;
+}
+#password2:after{
+	background-color: #FFF6F9;
+}
+.pass_input{
+	height: 100%;
+	margin-right: 2.5rem;
+	box-shadow: none;
+	margin-top: 0.3125rem;
+}
+/* 密码的输入框 */
+#password .pass_input{
+	height: 100%;
+	margin-right: 2.5rem;
+	box-shadow: none;
+}

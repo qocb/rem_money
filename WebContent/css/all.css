@@ -1,0 +1,33 @@
+*{
+	outline: none;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	font-style: normal;
+}
+.tab_bottom{
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 3.75rem;
+	background-color: #FFFFFF;
+	border-top: 0.0625rem solid #000000;
+}
+.pages .mui-icon{
+	color: #000000;
+	font-size: 30px;
+}
+.pages_name{
+	display: block;
+	color: #AAAAAA;
+	font-size: 0.75rem;
+	text-align: center;
+}
+.pages{
+	text-align: center;
+	float: left;
+	padding: 0.625rem 2.7rem;
+}
+.tab_bottom_ul{
+	padding-left:0.3125rem ;
+}

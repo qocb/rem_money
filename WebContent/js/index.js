@@ -1,0 +1,6 @@
+$(function(){
+	$("#addMsg").click(function(){
+		
+	});
+	
+})

@@ -1,0 +1,85 @@
+#index_head{
+	position: fixed;
+	width: 100%;
+	height: 4.3rem;
+	background-color: #FF6EA5;
+}
+#index_title{
+	color: #FFFFFF;
+	font-size: 1.3rem;
+	font-family: "黑体";
+	line-height: 3.125rem;
+	padding-left: 0.625rem;
+}
+.Msgstyle{
+	width: 95%;
+	background-color: #FFFFFF;
+	margin: 0 auto;
+	padding: 0.3125rem;
+	border-radius: 10px;
+}
+#todayMsg_title{
+	margin: 10px 0 0 0.3125rem;
+	padding-bottom: 0.625rem;
+	border-bottom: 0.0625rem solid #EEEEEE;
+	font-size: 18px;
+}
+.content_li{
+	padding: 0.625rem;
+	border-bottom: 0.0625rem solid #EEEEEE;
+}
+.content_title{
+	color: #000000;
+	font-family: "黑体";
+	font-size: 1.125rem;
+}
+.content_money{
+	color: #000000;
+	float: right;
+	font-size: 0.9375rem;
+}
+.content_type{
+	font-size: 0.75rem;
+	color: #000000;
+}
+#allMsg{
+	margin-top: 0.9375rem;
+	margin-bottom: 3.875rem;
+}
+#addMsg{
+	width: 2.875rem;
+	height: 2.875rem;
+	font-size: 2.125rem;
+	line-height: 1.6rem;
+	text-align: center;
+	position: fixed;
+	bottom: 4.375rem;
+	right: 1.25rem;
+	border-radius: 50%;
+}
+#monthMsg{
+	border-radius: 0.625rem;
+	margin: 0 auto;
+	width: 95%;
+	background-color: #FFFFFF;
+	padding: 1.25rem 10px;
+	margin-bottom: 1.25rem;
+}
+
+#out_span,#get_span{
+	font-size: 1.125rem;
+	font-weight: 900;
+}
+#outmoney,#getmoney{
+	font-size: 16px;
+}
+#remake{
+	font-size: 0.875rem;
+	color: #000000;
+	float: right;
+}
+.content_time{
+	font-size: 0.75rem;
+	float: right
+}
+

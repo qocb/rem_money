@@ -1,0 +1,97 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+html{
+	background-color: #FFF6F9 ;
+}
+body{
+	background-color: #FFF6F9 ;
+}
+#login{
+	margin-top: 8.125rem;
+	background-color: #FFF6F9;
+}
+#login:after{
+	background-color: #FFF6F9;
+}
+#login:before{
+	background-color: #FFF6F9;
+}
+#login label{
+	width: 10%;
+	height:10%;
+}
+/* 登陆按钮的盒子 */
+#login_button{
+	margin-top: 1.875rem;
+}
+/*登陆按钮*/
+#login_submit{
+	width: 70%;
+	height: 90%;
+	border: none;
+	border-radius: 1.25rem;
+	background-color: #FB74A4;
+	font-size: 1.0625rem;
+	line-height: 90%;
+	color: #FFD8F7;
+}
+/* 用户名输入的盒子 */
+#user{
+	width: 90%;
+	height: 3.125rem;
+	margin-top: 1.25rem;
+	border: none;
+	background-color: #FFFFFF;
+	margin: 0 auto;
+	border-radius: 0.625rem;
+}
+#user:after{
+	background-color:  #FFF6F9;
+}
+/* 用户名的输入框 */
+#user .user_input{
+	height: 100%;
+	margin-right: 2.5rem;
+	/* border: 2px solid black; */
+}
+
+/* 密码的盒子 */
+#password{
+	width: 90%;
+	height: 3.125rem;
+	background-color: #FFFFFF;
+	margin: 0 auto;
+	margin-top: 2.5rem;
+	border-radius: 0.625rem;
+}
+#password:after{
+	background-color: #FFF6F9;
+}
+/* 密码的输入框 */
+#password .pass_input{
+	height: 100%;
+	margin-right: 2.5rem;
+	box-shadow: none;
+}
+#tb{
+	width: 65%;
+	height: 2.5rem;
+	/* background-color: #0062CC; */
+	margin: 0 auto;
+	margin-top: 4.375rem;
+	background-color: #FFF6F9;
+}
+/* QQ图标 */
+#QQ{
+	background-color: #FFF6F9;
+	display: inline-block;
+	float: left;
+}
+/* 微信图标 */
+#weixin{
+	background-color: #FFF6F9;
+	display: inline-block;
+	float: right;
+}

@@ -1,0 +1,29 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+#box{
+	width: 90%;
+	height: 18.75rem;
+	margin: 0 auto;
+	/* background-color: #2AC845; */
+	/* margin-top: 1.25rem; */
+}
+#box #yusuan{
+	width: 100%;
+	height: 7.375rem;
+	padding: 0.625rem;
+	/* background-color: #0062CC; */
+}
+#submit{
+	display: block;
+	margin: 0 auto;
+	height: 2.5rem;
+	width: 90%;
+	background-color: #FF6EA5;
+	border: 0.0625rem solid #FF6EA5;
+	margin-top: 2.25rem;
+}
+.budget_money{
+	margin-top:1rem;
+}

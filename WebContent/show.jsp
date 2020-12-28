@@ -1,0 +1,226 @@
+<%@page import="java.util.Map"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="./css/show.css"/>
+		<link rel="stylesheet" type="text/css" href="css/all.css"/>
+		<script src="./echarts/echarts.js" type="text/javascript" charset="utf-8"></script>
+		
+	</head>
+
+	<body>
+		<script src="js/mui.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+	</body>
+	<div id="top">
+	</div>
+	<div id="cen1">
+		<div class="cen_top">
+			<p>分类统计</p>
+			<p class="p1">支出数额</p>
+		</div>
+		<div class="echarts_box" id="join"></div>
+	</div>
+	<div id="cen2">
+		<div class="cen_top">
+			<p>月统计</p>
+			<p class="p1">支出数额</p>
+		</div>
+		<div class="echarts_box" id="join2"></div>
+	</div>
+	<div class="tab_bottom">
+		<ul class="tab_bottom_ul">
+					<li class="pages">
+						<a href="<%=request.getContextPath()%>/index.do?method=queryouts">
+							<div class="mui-icon mui-icon-home">
+								<span class="pages_name">首页</span>
+							</div>
+						</a>
+					</li>
+				<li class="pages">
+						<a href="<%=request.getContextPath()%>/show.do?method=showTu">
+							<div class="mui-icon mui-icon-bars">
+								<span class="pages_name">统计</span>
+							</div>
+						</a>
+					</li>
+					<li class="pages">
+						<a href="user.jsp">
+							<div class="mui-icon mui-icon-contact">
+								<span class="pages_name">个人主页</span>
+							</div>
+						</a>
+					</li>
+			</ul>
+	</div>
+</html>
+<script type="text/javascript">
+var myChart = echarts.init(document.getElementById('join'));
+
+option = {
+    title: {
+        text: '统计',
+        subtext: '',
+        left: 'center'
+    },
+    tooltip: {
+        trigger: 'item',
+        formatter: '{a} <br/>{b} : {c} ({d}%)'
+    },
+    legend: {
+        orient: 'vertical',
+        left: 'top',
+        data: []
+    },
+    series: [
+        {
+            name: '支出详细',
+            type: 'pie',
+            radius: '55%',
+            center: ['50%', '60%'],
+            data: [
+            	<%  
+            		List moneys = (List)request.getAttribute("moneys");
+            		List kinds =(List)request.getAttribute("kinds");
+            		for(int i =0;i<kinds.size();i++){
+            	
+            	%>
+            	 {value: <%=moneys.get(i)%>, name: '<%=kinds.get(i)%>'},
+               <%}%>
+            ],
+            emphasis: {
+                itemStyle: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }
+    ]
+};
+
+myChart.setOption(option);
+var moneys = []; 
+var days = [];
+
+
+
+<% List moneys_list=(List)request.getAttribute("outmoneys");
+	for(int i = 0;i<moneys_list.size();i++){
+%>;
+	moneys.push(<%=moneys_list.get(i)%>);
+<%}%>
+<% List days_list=(List)request.getAttribute("outdays");
+for(int i = 0;i<days_list.size();i++){
+%>;
+days.push(<%=(String)days_list.get(i)%>);
+<%}%>
+
+
+var getmoneys = []; 
+<%
+  List getmoneys =(List)request.getAttribute("getmoneys");
+
+	for(int i =0;i<getmoneys.size();i++){
+%>
+getmoneys.push(<%=getmoneys.get(i)%>);
+	
+<%}%>
+console.log(moneys)
+console.log(days)
+var myChart = echarts.init(document.getElementById('join2'));
+
+option = {
+	    title : {
+	        text: '本月支出收入',
+	    },
+	    tooltip : {
+	        trigger: 'axis'
+	    },
+	    legend: {
+	        data:['收入','支出']
+	    },
+	    toolbox: {
+	        show : true,
+	        x:'520',
+	        y:'top',
+	        feature : {
+	            mark : {show: true},
+	            dataView : {show: true, readOnly: true,title:"数据视图",lang: ['数据视图', '关闭', '刷新'],},
+	            magicType : {show: true, type: ['bar','line','stack'],title: {
+	                line: '切换为折线图',
+	                bar: '切换为柱状图',
+	                stack: '切换为堆叠',
+	                tiled: '切换为平铺'
+	            }},
+	            restore : {show: true,title:"还原",},
+	            saveAsImage : {show: true,title:"保存为图片",}
+	        
+	        
+	        }
+	    },
+	    calculable : true,
+	    xAxis : [
+	        {
+	            type : 'category',
+	            boundaryGap : true,
+	            data : days
+	        }
+	    ],
+	    yAxis : [
+	        {
+	            type : 'value',
+	            axisLabel : {
+	             formatter: '{value}元 '
+	            }
+	        }
+	    ],
+	    series : [
+	        {
+	            name:'收入',
+	            type:'line',
+	            data:getmoneys,
+	            markPoint : {
+	                data : [
+	                    {type : 'max', name: '最大值'},
+	                    {type : 'min', name: '最小值'}
+	                ]
+	            },
+	            markLine : {
+	                data : [
+	                    {type : 'average', name: '平均值'}
+	                ]
+	            }
+	        },
+	        {
+	            name:'支出',
+	            type:'line',
+	            data:moneys,
+	            markPoint : {
+	                data : [
+	                        {type : 'max', name: '最大值'},
+	                        {type : 'min', name: '最小值'}
+	                ]
+	            },
+	            markLine : {
+	                data : [
+	                    {type : 'average', name : '平均值'}
+	                ]
+	            }
+	        }
+	    ]
+	};
+
+
+myChart.setOption(option);
+</script>

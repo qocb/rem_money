@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+  <display-name>rem_Money</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>login.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+  	<servlet-name>UserServlet</servlet-name>
+  	<servlet-class>com.HBSI.com.user.UserServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>UserServlet</servlet-name>
+  	<url-pattern>/UserServlet.do</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+  	<servlet-name>BudgetServlet</servlet-name>
+  	<servlet-class>com.HBSI.com.budget.BudgetServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>BudgetServlet</servlet-name>
+  	<url-pattern>/BudgetServlet.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>IndexServlet</servlet-name>
+  	<servlet-class>com.HBSI.com.index.IndexServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>IndexServlet</servlet-name>
+  	<url-pattern>/index.do</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+  	<servlet-name>ShowServlet</servlet-name>
+  	<servlet-class>com.HBSI.com.show.ShowServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>ShowServlet</servlet-name>
+  	<url-pattern>/show.do</url-pattern>
+  </servlet-mapping>
+  
+       <servlet>
+  	<servlet-name>OutsServlet</servlet-name>
+  	<servlet-class>com.HBSI.com.outs.OutsServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>OutsServlet</servlet-name>
+  	<url-pattern>/OutsServlet.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>GetsServlet</servlet-name>
+  	<servlet-class>com.HBSI.com.gets.GetsServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>GetsServlet</servlet-name>
+  	<url-pattern>/GetsServlet.do</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+  	<servlet-name>DealmsgServlet</servlet-name>
+  	<servlet-class>com.HBSI.com.deal.DealmsgServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>DealmsgServlet</servlet-name>
+  	<url-pattern>/dealmsg.do</url-pattern>
+  </servlet-mapping>
+  
+  
+  <filter>
+  	<filter-name>SessionFilter</filter-name>
+  	<filter-class>com.HBSI.com.filter.SessionFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>SessionFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <filter>
+  	<filter-name>CharacterEncodingFilter</filter-name>
+  	<filter-class>com.HBSI.com.filter.CharacterEncodingFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>CharacterEncodingFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</web-app>

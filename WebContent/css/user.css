@@ -1,0 +1,58 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+/**
+ * 上部分
+ */
+#table-view{
+	width: 100%;
+	height: 7.5rem;
+}
+/**
+ * 头像和名字与账号的盒子
+ */
+#table-view-cell{
+	margin-top: 1.25rem;
+}
+.mui-media-body::after{
+	content: ""!important;
+}
+/*头像部分点击背景*/
+.mui-table-view-cell > a:not(.mui-btn).mui-active
+{
+    background-color: #FFFFFF;
+}
+/* 预算设置 */
+#table-view2{
+	width: 100%;
+	height: 3.85rem;
+	margin-top: 2.25rem;
+	line-height: 2.5rem;
+	font-size: 1.0rem;
+}
+/* 导出 */
+#table-view3{
+	width: 100%;
+	height: 3.85rem;
+	line-height: 2.5rem;
+	font-size: 1.0rem;
+}
+/*去掉边框线*/
+.mui-table-view:before{
+	background-color: #FFFFFF;
+}
+.mui-table-view:after{
+	background-color: #FFFFFF;
+}
+#exit{
+	width: 80%;
+	height: 2.9375rem;
+	margin: 0 auto;
+	margin-top: 4.375rem;
+	background-color: #FB74A4;
+	border-radius: 1.25rem;
+	color: #FFD8F7;
+	line-height: 1.5rem;
+}

@@ -1,0 +1,102 @@
+package com.HBSI.com.budget;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * 预算表M层接口
+ * @author TianShuo
+ *
+ */
+public interface BudgetService {
+/**
+ * @desc 查询全部
+ * @return 返回预算表的全部信息
+ * @throws ClassNotFoundException
+ * @throws SQLException
+ */
+List<Map<String, Object>> queryAll() throws ClassNotFoundException, SQLException;
+
+
+/**
+ * @desc  根据【预算ID】查询一条数据
+ * @param budget_id
+ * @return
+ * @throws ClassNotFoundException
+ * @throws SQLException
+ */
+Map<String, Object> queryById(String budget_id)  throws ClassNotFoundException, SQLException;
+
+/**
+ * @desc  根据【用户ID】 查询此用户全部数据
+ * @param user_id
+ * @return
+ * @throws ClassNotFoundException
+ * @throws SQLException
+ */
+List<Map<String, Object>> queryByUserId(String user_id) throws ClassNotFoundException, SQLException;
+
+/**
+ * @desc 增加一条数据
+ * @param budget_money 	预算金钱
+ * @param budget_remain 剩余金钱
+ * @param budget_out  	支出金钱
+ * @param user_id 		用户ID
+ * @param budget_name 	 预算名
+ * @throws IOException 
+ * @throws FileNotFoundException 
+ */
+void save(
+		String budget_money,
+		String budget_remain,
+		String budget_out, 
+		String user_id ,
+		String budget_name
+		)
+				throws ClassNotFoundException, SQLException, FileNotFoundException, IOException;
+
+
+/**
+ * @desc 根据【预算ID】删除此信息
+ * @param budget_id
+ * @throws SQLException 
+ * @throws ClassNotFoundException 
+ */
+void delById(String budget_id) throws ClassNotFoundException, SQLException;
+
+	
+/**
+ * @desc 根据【用户ID】删除此信息
+ * @param user_id
+ * @throws SQLException 
+ * @throws ClassNotFoundException 
+ */
+void delByUserId(String user_id) throws ClassNotFoundException, SQLException;
+/**
+ * @desc 根据【预算ID 和 用户ID 】 修改
+ * @param budget_id
+ * @param user_id
+ * @param budget_money
+ * @param budget_remain
+ * @param budget_out
+ * @param budget_name
+ * @throws ClassNotFoundException
+ * @throws SQLException
+ * @throws FileNotFoundException
+ * @throws IOException
+ */
+void updateByIdAnByUserId(String budget_id,String user_id,String budget_money,
+		String budget_remain,
+		String budget_out, 
+		String budget_name)throws ClassNotFoundException, SQLException, FileNotFoundException, IOException;
+
+
+void reomveBudget_id(String budget_id) throws ClassNotFoundException, SQLException, FileNotFoundException, IOException;
+
+
+List<Map<String, Object>> queryAllByuser_id(String user_id) throws ClassNotFoundException, SQLException;
+
+}

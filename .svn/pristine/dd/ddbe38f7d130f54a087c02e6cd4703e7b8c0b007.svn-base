@@ -1,0 +1,220 @@
+package com.HBSI.com.outs;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.sql.Types;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+import com.HBSI.com.Dao.Dao;
+import com.HBSI.com.Dao.DaoImpl;
+
+/**
+ * @收入表M层实现类
+ * @author mxj
+ * @time 2020--12-22
+ */
+public class OutsServiceimpl implements OutsService{
+	Dao dao = new DaoImpl();
+	
+
+	public static void main(String[] args) throws ClassNotFoundException, SQLException, FileNotFoundException, IOException {
+		OutsServiceimpl outsServiceimpl = new OutsServiceimpl();
+		System.out.println(outsServiceimpl.queryAll());
+		//outsServiceimpl.save("o3", "510", "5", "2020-12-22 14:39:43", "u3", "太难了");
+		//outsServiceimpl.update("u3");
+		//System.out.println("删除成功");
+//		outsServiceimpl.edit("o2", "500", 7, "2020-12-22 14:39:43", "u2", "你管我？");
+//		System.out.println("修改成功");
+		//outsServiceimpl.editOutMoney("50000", "u3");
+//		outsServiceimpl.save("6666", 1, "2020--12--23--9:00", "u2", "太难了");
+//		System.out.println("添加成功");
+	}
+	
+	/**
+	 * @desc 1.查询全部
+	 * @return
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
+
+	@Override
+	public List<Map<String, Object>> queryAll() throws ClassNotFoundException, SQLException {
+		return dao.executeQueryForList("  select * from outs  ");
+	}
+	
+	/**
+	 * @desc 2.添加
+	 * @param out_id
+	 * @param out_money
+	 * @param out_type
+	 * @param out_date
+	 * @param user_id
+	 * @param out_rem
+	 * @throws ClassNotFoundException
+	 * @throws FileNotFoundException
+	 * @throws SQLException
+	 * @throws IOException
+	 */
+	
+	@Override
+	public void save(String out_money, int out_type, String out_date, String user_id,
+			String out_rem) throws ClassNotFoundException, FileNotFoundException, SQLException, IOException {
+		//dao.executeUpdate("insert into outs values(?,?,?,?,?,?)", new int []{Types.VARCHAR,Types.VARCHAR,Types.INTEGER,Types.VARCHAR,Types.VARCHAR,Types.VARCHAR}, new Object[]{out_id,out_money,out_type,out_date,user_id,out_rem});
+	String  sql = "insert into outs values(?,?,?,?,?,?)";
+	int []types = new int[6];
+	types[0]=Types.VARCHAR;
+	types[1]=Types.VARCHAR;
+	types[2]=Types.INTEGER;
+	types[3]=Types.VARCHAR;
+	types[4]=Types.VARCHAR;
+	types[5]=Types.VARCHAR;
+	
+	
+	Object[]values=new Object[6];
+	values[0]=UUID.randomUUID().toString();
+	values[1]=out_money;
+	values[2]=out_type;
+	values[3]=out_date;
+	values[4]=user_id;
+	values[5]=out_rem;
+	
+	dao.executeUpdate(sql, types, values);
+	}
+
+	/**
+	 * @desc 3.删除
+	 * @throws IOException 
+	 * @throws SQLException 
+	 * @throws FileNotFoundException 
+	 * @throws ClassNotFoundException 
+
+	 */
+	@Override
+	public void delete(String user_id) throws ClassNotFoundException, FileNotFoundException, SQLException, IOException {
+		dao.executeUpdate("delete from outs where user_id=?", new int[]{Types.VARCHAR}, new Object[]{user_id});
+		
+	}
+
+	/**
+	 * @desc 4.修改
+	 * @throws IOException 
+	 * @throws SQLException 
+	 * @throws FileNotFoundException 
+	 * @throws ClassNotFoundException 
+	 */
+	@Override
+	public void edit(String out_id, String out_money, int out_type, String out_date, String user_id, String out_rem) throws ClassNotFoundException, FileNotFoundException, SQLException, IOException {
+		dao.executeUpdate("update outs set out_id=?,out_money=?,out_type=?,out_date=?,out_rem=? where user_id=?",new int []{Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,Types.VARCHAR},new Object[]{out_id,out_money,out_type,out_date,out_rem,user_id} );
+	}
+	/**
+	 * @desc 5.根据用户id更改支出金钱
+	 * @throws IOException 
+	 * @throws SQLException 
+	 * @throws FileNotFoundException 
+	 * @throws ClassNotFoundException 
+	 * 
+	 */
+	@Override
+	public void editOutMoney(String out_money, String user_id) throws ClassNotFoundException, FileNotFoundException, SQLException, IOException {
+		dao.executeUpdate("update outs set out_money=? where user_id=?",
+				new int[]{Types.VARCHAR,Types.VARCHAR}, 
+				new Object[]{out_money,user_id});
+		
+	}
+	/**
+	 * @desc 6.根据用户id更改支出方式
+	 * @throws IOException 
+	 * @throws SQLException 
+	 * @throws FileNotFoundException 
+	 * @throws ClassNotFoundException 
+	 *
+	 */
+	@Override
+	public void editOutType(int out_type, String user_id) throws ClassNotFoundException, FileNotFoundException, SQLException, IOException {
+		
+		dao.executeUpdate("update outs set out_type=? where user_id=?",
+				new int[]{Types.INTEGER,Types.VARCHAR}, 
+				new Object[]{out_type,user_id});
+	}
+	/**
+	 * @desc 7.根据用户id 更改备注
+	 * @throws IOException 
+	 * @throws SQLException 
+	 * @throws FileNotFoundException 
+	 * @throws ClassNotFoundException 
+	 
+	 */
+	@Override
+	public void editOutRem(String out_rem, String user_id) throws ClassNotFoundException, FileNotFoundException, SQLException, IOException {
+		
+		dao.executeUpdate("update outs set out_rem=? where user_id=?",
+				new int[]{Types.VARCHAR,Types.VARCHAR}, 
+				new Object[]{out_rem,user_id});
+	}
+
+	@Override
+	public List<Map<String, Object>> querycurrentmonth(String currentmonth, String user_id) throws ClassNotFoundException, SQLException {
+		if(currentmonth==null){
+			currentmonth ="";
+		}
+		
+		int []types = {Types.VARCHAR,Types.VARCHAR};
+		
+		Object[] values = {"%"+currentmonth.trim()+"%",user_id};
+		String sql = "SELECT * FROM outs  WHERE out_date LIKE ?  AND user_id = ?";
+		return dao.executeQueryForList(sql,types,values);
+	}
+
+	@Override
+	public List<Map<String, Object>> queryAllbyuserid(String user_id) throws ClassNotFoundException, SQLException {
+		String sql = "SELECT outs.user_id,outs.out_money,outs.out_date,outkind.out_name FROM outs  LEFT  JOIN outkind ON outs.out_type=outkind.out_type WHERE user_id= ?";
+		return dao.executeQueryForList(sql, new int[]{Types.VARCHAR}, new Object[]{user_id});
+	}
+
+	@Override
+	public List<Map<String, Object>> querycurrentdescmonth(String currentMonth, String user_id) throws ClassNotFoundException, SQLException {
+		if(currentMonth==null){
+			currentMonth ="";
+		}
+		
+		int []types = {Types.VARCHAR,Types.VARCHAR};
+		
+		Object[] values = {user_id,"%"+currentMonth.trim()+"%"};
+		String sql = "SELECT * FROM outs WHERE user_id = ? AND out_date LIKE ? ORDER BY  out_date";
+		return dao.executeQueryForList(sql,types,values);
+	}
+	
+	@Override
+	public List<Map<String, Object>> querycurrentday(String currentMonth, String user_id) throws ClassNotFoundException, SQLException {
+		if(currentMonth==null){
+			currentMonth ="";
+		}
+		int []types = {Types.VARCHAR,Types.VARCHAR};
+		
+		Object[] values = {user_id,"%"+currentMonth.trim()+"%"};
+		String sql = "SELECT outs.out_date FROM outs WHERE user_id = ? AND out_date LIKE ? ORDER BY  out_date";
+		return dao.executeQueryForList(sql,types,values);
+		
+		
+	}
+
+	@Override
+	public List<Map<String, Object>> querykindByuid(String user_id) throws ClassNotFoundException, SQLException {
+		int []types = {Types.VARCHAR};
+		Object[] values = {user_id};
+		String sql = "SELECT outs.out_money,outkind.out_name FROM outs LEFT JOIN outkind ON outkind.out_type = outs.out_type WHERE outs.user_id = ?";
+		return dao.executeQueryForList(sql,types,values);
+	}
+	
+	@Override
+	public Map<String, Object> queryByOut_name(String out_name) throws ClassNotFoundException, SQLException {
+
+		return dao.executeQueryForMap("select * from outkind  where out_name =  '"+out_name+"'");
+		}
+
+	
+	
+}
